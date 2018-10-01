@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+  <body>
+
+    <ui:composition template="./WEB-INF/template.xhtml">
+
+      <ui:define name="metadata">
+        <f:metadata>
+          <ui:remove>
+            <f:viewParam name="id" value="#{operationsController.account}">
+              <f:converter converterId="accountConverter"/>
+            </f:viewParam>
+          </ui:remove>
+
+          <f:viewParam name="id" value="#{operationsController.account}"
+                       converter="#{accountConverter}"/>
+
+
+        </f:metadata>
+
+      </ui:define>
+
+      <ui:define name="top">
+        Opérations du compte de #{operationsController.account.name}
+      </ui:define>
+
+      <ui:define name="content">
+
+
+        <f:view>
+
+
+          <h:form>
+            <h1><h:outputText value="List"/></h1>
+            <p:dataTable value="#{operationsController.allOperations}" var="item">
+              <p:column>
+                <f:facet name="header">
+                  <h:outputText value="Id"/>
+                </f:facet>
+                <h:outputText value="#{item.id}"/>
+              </p:column>
+              <p:column>
+                <f:facet name="header">
+                  <h:outputText value="Description"/>
+                </f:facet>
+                <h:outputText value="#{item.description}"/>
+              </p:column>
+              <p:column>
+                <f:facet name="header">
+                  <h:outputText value="Moment"/>
+                </f:facet>
+                <h:outputText value="#{item.moment}"/>
+              </p:column>
+              <p:column>
+                <f:facet name="header">
+                  <h:outputText value="Montant"/>
+                </f:facet>
+                <h:outputText value="#{item.montant}"/>
+              </p:column>
+            </p:dataTable>
+          </h:form>
+        </f:view>
+
+
+      </ui:define>
+
+    </ui:composition>
+
+  </body>
+</html>
