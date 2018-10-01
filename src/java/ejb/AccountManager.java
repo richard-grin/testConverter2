@@ -16,8 +16,8 @@ import javax.persistence.TypedQuery;
     name="java:app/jdbc/bank",
     serverName="localhost",
     portNumber=1527,
-    user="toto", // nom et
-    password="toto", // mot de passe que vous avez donnés lors de la création de la base de données
+    user="***", // nom et
+    password="***", // mot de passe que vous avez donnés lors de la création de la base de données
     databaseName="bank"
 )
 @Stateless
